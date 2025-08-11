@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SARKARI RESULT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            position: relative;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000;
+        }
+        .logo span {
+            font-size: 0.875rem;
+            color: #888;
+            font-weight: 400;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        .menu-toggle:hover {
+            color: #007bff;
+        }
+        nav {
+            flex-grow: 1;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+            justify-content: flex-end;
+        }
+        nav a {
+            text-decoration: none;
+            color: #888;
+            font-weight: 400;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #007bff;
+        }
+        .hero {
+            padding: 2rem 1rem;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin: 0 0 1.5rem 0;
+            line-height: 1;
+            font-weight: 700;
+            text-align: left;
+        }
+        .search-container {
+            margin: 0 auto;
+            max-width: 90%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .search-input {
+            width: 100%;
+            max-width: 600px;
+            padding: 0.625rem;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+        .search-input:hover {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+        .sections {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 1rem;
+            gap: 1rem;
+        }
+        .section {
+            flex: 1;
+            background-color: #fff;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-width: 250px;
+        }
+        .section h3 {
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.625rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        .item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+        .item-title {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .item-org {
+            font-size: 0.875rem;
+            color: #666;
+            font-weight: 400;
+        }
+        .item-date {
+            font-size: 0.875rem;
+            color: #888;
+            font-weight: 400;
+        }
+        .item-link {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+        .item-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .view-more {
+            padding: 0.625rem 1.25rem;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 0.875rem;
+            width: 80%;
+            margin: 1rem auto 0;
+            text-align: center;
+            transition: all 0.3s ease;
+            justify-content: center;
+            display: flex;
+        }
+        .view-more:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.05);
+        }
+        .quick-links {
+            background-color: #fff;
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: 4px;
+        }
+        .quick-links h2 {
+            margin-top: 0;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.625rem;
+        }
+        .link-button {
+            padding: 0.625rem;
+            background-color: #f0f0f0;
+            text-align: center;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+        .link-button:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.05);
+            color: #007bff;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 0.625rem;
+            font-size: 0.75rem;
+            font-weight: 400;
+        }
+        .hidden {
+            display: none;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .sections {
+                flex-direction: column;
+            }
+            .section {
+                min-width: 100%;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            nav {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #fff;
+                padding: 1rem;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            nav.active {
+                display: block;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .search-input {
+                font-size: 0.875rem;
+            }
+            .section h3 {
+                font-size: 1rem;
+            }
+            .item-title {
+                font-size: 0.875rem;
+            }
+            .item-org, .item-date, .item-link {
+                font-size: 0.75rem;
+            }
+            .quick-links h2 {
+                font-size: 1.25rem;
+            }
+            .link-button {
+                font-size: 0.75rem;
+            }
+            .view-more {
+                width: 90%;
+            }
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">SARKARI RESULT <span>सरकारी रिजल्ट</span></div>
+        <button class="menu-toggle">&#9776;</button>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>GOVT JOBS<br>UPDATES.</h1>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for jobs, admit cards, or results..." id="searchBar">
+        </div>
+    </section>
+
+    <section class="sections">
+        <div class="section" id="latestJobs">
+            <h3>Latest Jobs</h3>
+            <div class="item" data-search="IBPS CRP CSA - XV Institute of Banking Personnel Selection 21/08/2025">
+                <div class="item-title">IBPS CRP CSA - XV</div>
+                <div class="item-org">Org: Institute of Banking Personnel Selection</div>
+                <div class="item-date">Last Date: 21/08/2025</div>
+                <a href="#" class="item-link">Details --</a>
+            </div>
+            <div class="item" data-search="RRB Technician Railway Recruitment Boards 07/08/2025">
+                <div class="item-title">RRB Technician</div>
+                <div class="item-org">Org: Railway Recruitment Boards</div>
+                <div class="item-date">Last Date: 07/08/2025</div>
+                <a href="#" class="item-link">Details --</a>
+            </div>
+            <div class="item" data-search="IB Security Assistant Recruitment 2025 Intelligence Bureau 17/08/2025">
+                <div class="item-title">IB Security Assistant Recruitment 2025</div>
+                <div class="item-org">Org: Intelligence Bureau</div>
+                <div class="item-date">Last Date: 17/08/2025</div>
+                <a href="#" class="item-link">Details --</a>
+            </div>
+            <div class="item" data-search="IB ACIO Recruitment 2025 Intelligence Bureau 10/08/2025">
+                <div class="item-title">IB ACIO Recruitment 2025</div>
+                <div class="item-org">Org: Intelligence Bureau</div>
+                <div class="item-date">Last Date: 10/08/2025</div>
+                <a href="#" class="item-link">Details --</a>
+            </div>
+            <div class="item" data-search="Indian Bank Apprentice Recruitment 2025 Indian Bank 07/08/2025">
+                <div class="item-title">Indian Bank Apprentice Recruitment 2025</div>
+                <div class="item-org">Org: Indian Bank</div>
+                <div class="item-date">Last Date: 07/08/2025</div>
+                <a href="#" class="item-link">Details --</a>
+            </div>
+            <div class="item" data-search="GIC Assistant Recruitment 2025 Oriental Insurance Company Limited 17/06/2025">
+                <div class="item-title">GIC Assistant Recruitment 2025</div>
+                <div class="item-org">Org: Oriental Insurance Company Limited</div>
+                <div class="item-date">Last Date: 17/06/2025</div>
+                <a href="#" class="item-link">Details --</a>
+            </div>
+            <button class="view-more"><a href="latest.html">View More Jobs</a></button>
+        </div>
+
+        <div class="section" id="admitCard">
+            <h3>Admit Card</h3>
+            <div class="item" data-search="IBPS PO XII Pre Exam 2024-07-22">
+                <div class="item-title">IBPS PO XII Pre Exam</div>
+                <div class="item-date">Release: 2024-07-22</div>
+                <a href="#" class="item-link">Download</a>
+            </div>
+            <button class="view-more">View More Admit Cards</button>
+        </div>
+
+        <div class="section" id="result">
+            <h3>Result</h3>
+            <div class="item" data-search="UPSC NDA Final Result 2024-07-26">
+                <div class="item-title">UPSC NDA Final Result</div>
+                <div class="item-date">Release: 2024-07-26</div>
+                <a href="#" class="item-link">View --</a>
+            </div>
+            <button class="view-more">View More Results</button>
+        </div>
+    </section>
+
+    <section class="quick-links">
+        <h2>Quick Links</h2>
+        <div class="links-grid">
+            <a href="#" class="link-button">Answer Key</a>
+            <a href="#" class="link-button">Syllabus</a>
+            <a href="#" class="link-button">Admission</a>
+            <a href="#" class="link-button">Certificates</a>
+            <a href="#" class="link-button">Offline Forms</a>
+            <a href="#" class="link-button">Important Dates</a>
+            <a href="#" class="link-button">Top Online Forms</a>
+            <a href="#" class="link-button">All Notifications</a>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 Sarkari Result. All rights reserved.<br>
+        Disclaimer: This is a demo website for educational purposes only.
+    </footer>
+
+    <script>
+        const searchBar = document.getElementById('searchBar');
+        const items = document.querySelectorAll('.item');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+
+        searchBar.addEventListener('input', function() {
+            const filter = searchBar.value.toLowerCase();
+            items.forEach(item => {
+                const text = item.getAttribute('data-search').toLowerCase();
+                if (text.includes(filter)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
